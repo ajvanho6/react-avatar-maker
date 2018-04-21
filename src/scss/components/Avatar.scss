@@ -1,0 +1,22 @@
+/* ==|====================
+ * Component / Avatar
+ * ======================= */
+
+ @import '../abstracts/variables';
+
+ .avatar{
+     position: relative;
+     width: 100%;
+     text-align: center;
+     margin-bottom: 20px;
+
+     h1{
+         font-size: 24px;
+         margin: 40px 0px 10px 0px;
+     }
+
+     img{
+         margin: 0 auto;
+
+     }
+ }

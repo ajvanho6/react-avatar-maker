@@ -1,0 +1,68 @@
+/* ==|====================
+ * Base / Base
+ * ======================= */
+
+@import '../abstracts/variables';
+
+html {
+   // sass-lint:disable-block no-vendor-prefixes
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+  font-size: $text__size--base;
+  height: 100%;
+  line-height: $text__line-height--base;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: inherit;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+
+}
+
+body {
+  // sass-lint:disable-block no-vendor-prefixes
+  -webkit-font-smoothing: antialiased;
+  color: $text__color--base;
+  font-family: $text__family--serif;
+  font-size: $text__size--base;
+  line-height: $text__line-height--base;
+  margin: 0;
+  height: 100%;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  background-color: $brand__white;
+}
+
+#app{
+  position: relative;
+  height: 100%;
+}
+
+img{
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+button:focus {
+  outline:0;
+}
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: none;
+}
