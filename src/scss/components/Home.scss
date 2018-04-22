@@ -24,19 +24,6 @@
             &:last-child{
                 margin-bottom: 10px;
             }
-
-            &.hidden{
-                visibility: hidden;
-                opacity: 0;
-                max-height: 0;
-                margin-bottom: 0px;
-            }
-
-            &.visible{
-                visibility: visible;
-                opacity: 1;
-                max-height: 60px;
-            }
         }
 
         &__title{
@@ -94,6 +81,7 @@
         max-width: 420px;
         height: 50px;
         font-weight: bold;
+        box-shadow: $box__shadow;
 
         &:hover{
             background: rgba($brand__green, 0.8);
