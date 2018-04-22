@@ -81,10 +81,12 @@ class Home extends React.Component {
         }
         if (top === 'Eyepatch') {
             this.addOrRemove(listItems, 'accessories');
+            this.addOrRemove(actions, changeAvatarAccessories);
         }
         if (top === 'Eyepatch' || top === 'Hat' || top === 'Hijab' ||
             top === 'Turban' || top === 'WinterHat1' || top === 'NoHair') {
             this.addOrRemove(listItems, 'hairColor');
+            this.addOrRemove(actions, changeHairColor);
         }
 
         return (
@@ -96,7 +98,7 @@ class Home extends React.Component {
                         return (
                                 <ListSwiper
                                     key={i}
-                                    title={list}
+                                    title={list.replace(/([A-Z])/g, ' $1')}
                                     selectedAvatar={data[list]}
                                     changeAvatarImage={actions[i]}
                                     className={list}
