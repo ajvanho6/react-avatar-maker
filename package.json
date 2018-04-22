@@ -1,13 +1,13 @@
 {
-  "name": "smart-soaf-one-app-react",
+  "name": "react-avatar-creator",
   "version": "1.0.0",
-  "description": "Smart ONE react app",
-  "author": "Computer Rock",
+  "description": "Campai developer assigment",
+  "author": "Ivan Baresic",
   "license": "ISC",
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "https://spoiledmilk.git.beanstalkapp.com/smart-soaf-one-app-react.git"
+    "url": "https://github.com/ajvanho6/react-avatar-maker.git"
   },
   "scripts": {
     "test": "cross-env ./node_modules/karma/bin/karma start",
