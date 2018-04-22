@@ -81,6 +81,7 @@
   "dependencies": {
     "avataaars": "^1.1.0",
     "bluebird": "^3.5.0",
+    "classnames": "^2.2.5",
     "draft-js": "^0.10.1",
     "immutable": "^3.8.1",
     "keymirror": "^0.1.1",

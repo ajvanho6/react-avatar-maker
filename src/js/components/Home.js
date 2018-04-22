@@ -16,9 +16,7 @@ import {
     changeAvatarSkin,
  } from '../actions/avatarActions';
 
-
 import '../../scss/components/Home.scss';
-
 
 class Home extends React.Component {
     static propTypes = {
@@ -45,67 +43,67 @@ class Home extends React.Component {
         console.log('Some action for saving');
     }
 
+    addOrRemove = (array, value) => {
+        let index = array.indexOf(value);
+        if (index === -1) {
+            array.push(value);
+        } else {
+            array.splice(index, 1);
+        }
+    }
+
     render() {
+        /* eslint-disable */
         const {
             data,
             top,
+            changeAvatarTop,
+            changeAvatarAccessories,
+            changeHairColor,
+            changeFacialHair,
+            changeAvatarClothes,
+            changeAvatarEyes,
+            changeAvatarEyeBrow,
+            changeAvatarMouth,
+            changeAvatarSkin,
         } = this.props;
+        /* eslint-enable */
+
+        let actions = [
+            changeAvatarTop, changeAvatarAccessories, changeHairColor, changeFacialHair,
+            changeAvatarClothes, changeAvatarEyes, changeAvatarEyeBrow, changeAvatarMouth,
+            changeAvatarSkin,
+        ];
+        let listItems = [];
+        let keys = Object.keys(data);
+        for (let i = 0; i < keys.length; i += 1) {
+            listItems.push(keys[i]);
+        }
+        if (top === 'Eyepatch') {
+            this.addOrRemove(listItems, 'accessories');
+        }
+        if (top === 'Eyepatch' || top === 'Hat' || top === 'Hijab' ||
+            top === 'Turban' || top === 'WinterHat1' || top === 'NoHair') {
+            this.addOrRemove(listItems, 'hairColor');
+        }
 
         return (
             <div className="home">
                 <Avatar />
                 <ul className="home__choice">
-                    <ListSwiper
-                        title="top"
-                        selectedAvatar={data.top}
-                        changeAvatarImage={this.props.changeAvatarTop}
-                     />
-                    <ListSwiper
-                        className={top === 'Eyepatch' ? 'hidden' : 'visible'}
-                        title="accessories"
-                        selectedAvatar={data.accessories}
-                        changeAvatarImage={this.props.changeAvatarAccessories}
-                    />
-                    <ListSwiper
-                        className={
-                            top === 'Hat' || top === 'Hijab' ||
-                            top === 'Turban' || top === 'WinterHat1' ||
-                            top === 'Eyepatch'
-                            ? 'hidden' : 'visible'}
-                        title="hair color"
-                        selectedAvatar={data.hairColor}
-                        changeAvatarImage={this.props.changeHairColor}
-                    />
-                    <ListSwiper
-                        title="facial hair"
-                        selectedAvatar={data.facialHair}
-                        changeAvatarImage={this.props.changeFacialHair}
-                    />
-                    <ListSwiper
-                        title="clothes"
-                        selectedAvatar={data.clothes}
-                        changeAvatarImage={this.props.changeAvatarClothes}
-                    />
-                    <ListSwiper
-                        title="eyes"
-                        selectedAvatar={data.eyes}
-                        changeAvatarImage={this.props.changeAvatarEyes}
-                    />
-                    <ListSwiper
-                        title="eyebrow"
-                        selectedAvatar={data.eyebrow}
-                        changeAvatarImage={this.props.changeAvatarEyeBrow}
-                    />
-                    <ListSwiper
-                        title="mouth"
-                        selectedAvatar={data.mouth}
-                        changeAvatarImage={this.props.changeAvatarMouth}
-                    />
-                    <ListSwiper
-                        title="skin"
-                        selectedAvatar={data.skin}
-                        changeAvatarImage={this.props.changeAvatarSkin}
-                    />
+                    {
+                        listItems.map((list, i) => {
+                        return (
+                                <ListSwiper
+                                    key={i}
+                                    title={list}
+                                    selectedAvatar={data[list]}
+                                    changeAvatarImage={actions[i]}
+                                    className={list}
+                                />
+                            );
+                        })
+                    }
                 </ul>
 
                 <a className="submit" href="#" onClick={this.sumbitAvatar}>Change Avatar</a>
