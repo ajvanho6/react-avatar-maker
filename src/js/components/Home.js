@@ -16,6 +16,8 @@ import {
     changeAvatarSkin,
  } from '../actions/avatarActions';
 
+ import {selectAvatarTopProperty} from '../../js/reducers/avatarReducer';
+
 import '../../scss/components/Home.scss';
 
 class Home extends React.Component {
@@ -35,7 +37,9 @@ class Home extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            data: this.props.data,
+        };
     }
 
     sumbitAvatar = (e) => {
@@ -55,7 +59,6 @@ class Home extends React.Component {
     render() {
         /* eslint-disable */
         const {
-            data,
             top,
             changeAvatarTop,
             changeAvatarAccessories,
@@ -68,6 +71,10 @@ class Home extends React.Component {
             changeAvatarSkin,
         } = this.props;
         /* eslint-enable */
+
+         const {
+            data,
+        } = this.state;
 
         let actions = [
             changeAvatarTop, changeAvatarAccessories, changeHairColor, changeFacialHair,
@@ -117,7 +124,7 @@ class Home extends React.Component {
 const mapStateToProps = (state) => {
     return {
         data: state.avatarReducer.data,
-        top: state.avatarReducer.avatar.top,
+        top: selectAvatarTopProperty(state),
     };
 };
 

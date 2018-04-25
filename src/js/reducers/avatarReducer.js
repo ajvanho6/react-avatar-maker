@@ -142,4 +142,8 @@ const avatarReducer = (state = initialState, action) => {
     }
 };
 
+export const selectAvatarTopProperty = ({avatarReducer: state}) => {
+    return state.avatar.top;
+};
+
 export default avatarReducer;
