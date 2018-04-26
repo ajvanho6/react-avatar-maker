@@ -81,6 +81,7 @@ class Home extends React.Component {
             changeAvatarSkin,
         ];
         let listItems = [];
+        let overlapItems = ['NoHair', 'Hat', 'Hijab', 'Turban', 'WinterHat1'];
         let keys = Object.keys(data);
         for (let i = 0; i < keys.length; i += 1) {
             listItems.push(keys[i]);
@@ -98,11 +99,7 @@ class Home extends React.Component {
                 }
 
                 {
-                   (top === 'Hat' ||
-                    top === 'Hijab' ||
-                    top === 'Turban' ||
-                    top === 'WinterHat1' ||
-                    top === 'NoHair') &&
+                    overlapItems.indexOf(top) >= 0 &&
                     this.addOrRemove(listItems, 'hairColor') &&
                     this.addOrRemove(actions, changeHairColor)
                 }
