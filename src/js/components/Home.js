@@ -85,33 +85,41 @@ class Home extends React.Component {
         for (let i = 0; i < keys.length; i += 1) {
             listItems.push(keys[i]);
         }
-        if (top === 'Eyepatch') {
-            this.addOrRemove(listItems, 'accessories');
-            this.addOrRemove(actions, changeAvatarAccessories);
-        }
-        if (top === 'Eyepatch' || top === 'Hat' || top === 'Hijab' ||
-            top === 'Turban' || top === 'WinterHat1' || top === 'NoHair') {
-            this.addOrRemove(listItems, 'hairColor');
-            this.addOrRemove(actions, changeHairColor);
-        }
-
         return (
             <div className="home">
                 <Avatar />
                 <ul className="home__choice">
-                    {
-                        listItems.map((list, i) => {
-                        return (
-                                <ListSwiper
-                                    key={i}
-                                    title={list.replace(/([A-Z])/g, ' $1')}
-                                    selectedAvatar={data[list]}
-                                    changeAvatarImage={actions[i]}
-                                    className={list}
-                                />
-                            );
-                        })
-                    }
+                {
+                    top === 'Eyepatch' &&
+                    this.addOrRemove(listItems, 'accessories') &&
+                    this.addOrRemove(actions, changeAvatarAccessories) &&
+                    this.addOrRemove(listItems, 'hairColor') &&
+                    this.addOrRemove(actions, changeHairColor)
+                }
+
+                {
+                   (top === 'Hat' ||
+                    top === 'Hijab' ||
+                    top === 'Turban' ||
+                    top === 'WinterHat1' ||
+                    top === 'NoHair') &&
+                    this.addOrRemove(listItems, 'hairColor') &&
+                    this.addOrRemove(actions, changeHairColor)
+                }
+
+                {
+                    listItems.map((list, i) => {
+                    return (
+                            <ListSwiper
+                                key={i}
+                                title={list.replace(/([A-Z])/g, ' $1')}
+                                selectedAvatar={data[list]}
+                                changeAvatarImage={actions[i]}
+                                className={list}
+                            />
+                        );
+                    })
+                }
                 </ul>
 
                 <a className="submit" href="#" onClick={this.sumbitAvatar}>Change Avatar</a>
